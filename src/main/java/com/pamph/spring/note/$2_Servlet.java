@@ -87,8 +87,9 @@ public class $2_Servlet {
   * · 개발자는 서블릿을 이용해 매우 편리하게 HTTP 스펙을 이용할 수 있다.
   *
   * 1) 서블릿의 동작 과정
+  *                                           Web Application Server
   *                                         ┌──────────────────────────────────────────────────────────────┐
-  *                                         │   Web Application Server             Servlet Container       │
+  *                                         │                                      Servlet Container       │
   *  ┌─────────────┐                        │     ┌───────────────┐         ┌────────────────────────────┐ │
   *  │ Web browser │                        │     │               │         │                            │ │
   *  │             │  localhost:8080/hello  │     │  [request]  → │ ------> │   run  (request, response) │ │
