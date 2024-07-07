@@ -7,6 +7,7 @@ Let’s study the various core principles contained in the Spring MVC.
 1. What is Web Application
 2. Servlet
 3. multi-thread In WAS
+4. HTTP connection case
 
 ## Fixed
 
