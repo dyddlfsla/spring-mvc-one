@@ -12,4 +12,7 @@ Let’s study the various core principles contained in the Spring MVC.
 
 ## Fixed
 
-- empty
+- Tomcat 의 logging.level 이 DEBUG → trace 로 변경되었습니다.
+  ```
+  logging.level.org.apache.coyote.http11=trace
+  ```
