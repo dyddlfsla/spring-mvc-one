@@ -48,6 +48,7 @@ public class $6_HelloServlet {
   *   }
   * }
   *
+  * Servlet 클래스는 HttpServlet 클래스를 상속해야 한다. => extends HttpServlet
   * 클래스에 @WebServlet 애노테이션을 적용한다.
   *   - name: Servlet 의 이름
   *   - urlPatterns: Servlet 에 연결할 URL 경로
