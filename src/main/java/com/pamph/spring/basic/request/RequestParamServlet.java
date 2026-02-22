@@ -19,8 +19,20 @@ public class RequestParamServlet extends HttpServlet {
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-    System.out.println("RequestParamServlet.service");
-    request.getParameterNames();
+    System.out.println("[전체 파라미터 조회] - start");
 
+    request.getParameterNames().asIterator()
+        .forEachRemaining(paramName -> System.out.println(paramName + " = " + request.getParameter(paramName)));
+
+    System.out.println("[전체 파라미터 조회] - end");
+    System.out.println();
+
+    System.out.println("[단일 파라미터 조회");
+    String userName = request.getParameter("username");
+    System.out.println("username = " + userName);
+    
+    String age = request.getParameter("age");
+    System.out.println("age = " + age);
+    
   }
 }
