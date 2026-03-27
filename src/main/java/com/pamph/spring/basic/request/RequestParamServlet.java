@@ -33,6 +33,14 @@ public class RequestParamServlet extends HttpServlet {
     
     String age = request.getParameter("age");
     System.out.println("age = " + age);
-    
+
+    System.out.println("[이름이 같은 복수 파라미터 조회]");
+    // 이름이 같은 파라미터가 2개 이상 존재할때 단일 파라미터를 조회하면 가장 먼저 전송된 데이터가 조회된다.
+    String[] usernames = request.getParameterValues("username");
+
+    for (String username : usernames) {
+      System.out.println("username = " + username);
+    }
+
   }
 }
