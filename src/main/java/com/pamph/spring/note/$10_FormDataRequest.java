@@ -20,7 +20,7 @@ public class $10_FormDataRequest {
   * </form>
   *
   *
-  * HTML Form 태그에서 메서드를 method="pose" 로 지정하고 요청을 보내면 웹 브라우저는 다음 형식으로
+  * HTML Form 태그에서 메서드를 method="post" 로 지정하고 요청을 보내면 웹 브라우저는 다음 형식으로
   * HTTP 메세지를 만든다. (개발자 모드로 확인해보자)
   *
   * ▶ 요청 URL: http://localhost:8080/request-param
