@@ -21,9 +21,21 @@ public class $11_HttpMessageBodyRequest {
   * ServletInputStream inputStream = req.getInputStream();
   * String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
   *
-  * System.out.println("messageBody = " + messageBody);
+  * ※ 참고
+  * inputStream 은 byte 코드를 반환한다. byte 코드를 우리가 읽을 수 있는 문자(String)으로 보려면 문자표(Charset)을 지정해주어야 한다.
+  * 여기서는 UTF_8 Charset 을 지정해주었다.
   *
+  * System.out.println("messageBody = " + messageBody);
   * resp.getWriter().write("great!");
+  *
+  * Postman 을 통해 테스트 해보자.
+  *
+  * 메시지 바디에 문자를 담아 전송.
+  *
+  * ● POST http://localhost:8080/request-body-string
+  * ● content-type:text/plain
+  * ● messageBody:hello
+  * ● 결과-> messageBody = hello
   *
   *
   *
