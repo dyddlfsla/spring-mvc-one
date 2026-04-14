@@ -24,15 +24,9 @@
 
 성공
 <ul>
-  <li>
-    id=<%=member.getId()%>
-  </li>
-  <li>
-    username=<%=member.getUsername()%>
-  </li>
-  <li>
-    age=<%=member.getAge()%>
-  </li>
+  <li>id=<%=member.getId()%></li>
+  <li>username=<%=member.getUsername()%></li>
+  <li>age=<%=member.getAge()%></li>
 </ul>
 
 </body>
