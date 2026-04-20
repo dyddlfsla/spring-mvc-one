@@ -7,6 +7,7 @@
  스프링부트 환경에서는 WAS 가 내장되어 있으므로 위의 과정이 없이도 손쉽게 서블릿 코드를 실행할 수 있다.
 
  ### 1) Servlet 환경 구성
+
  ```java
  ️ @ServletComponentScan
  ```  
