@@ -26,7 +26,7 @@ public class FrontControllerServletV1 extends HttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    System.out.println("FrontControllerServlet.service call");
+    System.out.println("FrontControllerServletV1.service call");
 
     String requestURI = request.getRequestURI();
     ControllerV1 controller = controllerMap.get(requestURI);
