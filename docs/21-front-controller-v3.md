@@ -12,9 +12,10 @@
  
  v3 구조에서는 ModelView 객체를 도입하여 서블릿에 대한 의존성과 뷰 생성을 변경해본다.
 
+![viewResolver 도입](./images/introduce_viewResolver.png)
 
  #### 1) ModelView 클래스
- `HttpServletRequest` 대신 데이터와 view 이름을 저장하는 Model 객체를 만들자.
+ `HttpServletRequest` 대신 데이터와 view 이름을 저장하~는 Model 객체를 만들자.
 
 ```java
 public class ModelView {
@@ -141,5 +142,8 @@ public class FrontControllerServletV3 extends HttpServlet {
  뷰 리졸버는 컨트롤러가 반환한 논리적 view 이름을 실제 물리적 view 경로로 변경한다.
  - 논리 뷰 이름: save-result
  - 물리 뷰 경로: /WEB-INF/views/save-result.jsp
+
+
+ 
 
  

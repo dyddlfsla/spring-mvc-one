@@ -12,6 +12,8 @@
  이러한 중복 코드를 제거할 수 없을까?  
  뷰를 전담 처리하는 객체를 만들어 분리해보자.
 
+![뷰를 담당하는 MyView 도입](./images/introduce_MyViewClass.png)
+
  ### 1) ☑️ MyView 클래스 생성.  
  MyView 클래스는 viewPath 와 forward 를 맡아 처리한다. 
 
@@ -79,5 +81,5 @@ public class FrontControllerServletV2 extends HttpServlet {
  - 컨트롤러는 그저 뷰를 담당하는 MyView 객체를 생성한뒤 반환해주면 된다.
  - 프론트 컨트롤러가 MyView 객체의 render() 를 호출하여 화면을 처리한다.
 
- ![뷰를 담당하는 MyView 도입](./images/introduce_MyViewClass.png)
+ 
 
