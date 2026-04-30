@@ -12,7 +12,7 @@
  
  v3 구조에서는 ModelView 객체를 도입하여 서블릿에 대한 의존성과 뷰 생성을 변경해본다.
 
-![viewResolver 도입](./images/introduce_viewResolver.png)
+![viewResolver 도입](../images/introduce_viewResolver.png)
 
  #### 1) ModelView 클래스
  `HttpServletRequest` 대신 데이터와 view 이름을 저장하~는 Model 객체를 만들자.

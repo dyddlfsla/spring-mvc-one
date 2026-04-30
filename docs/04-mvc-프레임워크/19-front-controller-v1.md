@@ -3,8 +3,8 @@
  
  MVC 패턴의 공통 처리 문제를 해결하기 위한 프론트 컨트롤러 패턴을 만들어보자.
 
-![프론트 컨트롤러 패턴 도입 전](./images/before_front_controller_pattern.png)
-![프론트 컨트롤러 패턴 도입 후](./images/after_front_controller_pattern.png)
+![프론트 컨트롤러 패턴 도입 전](../images/before_front_controller_pattern.png)
+![프론트 컨트롤러 패턴 도입 후](../images/after_front_controller_pattern.png)
 
  ☑️ FrontController 의 특징
  - 프론트 컨트롤러 서블릿 하나로 클라이언트의 모든 요청을 다 받음.

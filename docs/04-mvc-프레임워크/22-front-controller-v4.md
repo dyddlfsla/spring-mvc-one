@@ -8,7 +8,7 @@
  좋은 프레임워크는 아키텍처도 중요하지만, 그와 더불어 실제 개발하는 개발자가 단순하고 편리하게  
  사용할 수 있는 실용성이 있어야 한다.  
 
- ![viewName 만 전달하기](./images/introduce_viewName.png)
+ ![viewName 만 전달하기](../images/introduce_viewName.png)
 
  이제는 컨트롤러가 ModelView 가 아닌 view 이름만 반환한다.   
  model 객체는 프론트 컨트롤러에서 생성되어 메서드의 인자로 컨트롤러에게 전달되는 것이다.
