@@ -161,3 +161,139 @@ public class FrontControllerV5 extends HttpServlet {
  위 코드에서는 아직 ControllerV3 타입의 컨트롤러만 다루고 있기에, 어댑터 계층이 추가된 것이 구체적으로 어떤 결과를 가져오는지 체감되지 않는다.  
  그러나 ControllerV3 외에도 다른 타입의 컨트롤러가 필요한 상황이 된다면 이와 같은 구조는 강력한 확장성을 보여줄 수 있다.
 
+
+---
+
+ ## mvc 프론트 컨트롤러 v5 - v4 컨트롤러 추가하기
+
+ 요구사항이 변경되어 ControllerV 타입의 컨트롤러도 사용해야 하는 상황이 됐다고 가정하자.
+ 우리는 이미 프론트 컨트롤러와 핸들러(컨트롤러)사이에 핸들러 어댑터 계층을 추가했으므로 쉽게 확장할 수 있다.
+
+ ### 1) ControllerV4 타입의 핸들러(컨트롤러) 추가
+
+```java
+@WebServlet(name = "frontControllerV5", urlPatterns = "/front-controller/v5/*")
+public class FrontControllerV5 extends HttpServlet {
+
+  private final Map<String, Object> handlerMappingMap = new HashMap<>();
+  private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();
+
+  public FrontControllerV5() {
+    initHandlerMappingMap();
+    initHandlerAdapters();
+  }
+
+  private void initHandlerMappingMap() {
+    handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
+    handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
+    handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
+    
+    // 핸들러 모음집에 추가하려는 컨트롤러를 넣어준다.
+    handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+    handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
+    handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
+  }
+
+  private void initHandlerAdapters() {
+    handlerAdapters.add(new ControllerV3HandlerAdapter());
+    
+    // 새로운 타입의 핸들러(컨트롤러)를 지원하는 핸들러 어댑터 역시 추가해주어야 한다.
+    handlerAdapters.add(new ControllerV4HandlerAdapter());
+  }
+
+  @Override
+  protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    System.out.println("FrontControllerServletV5.service call");
+
+    Object handler = getHandler(request);
+
+    if (handler == null) {
+      response.setStatus(HttpServletResponse.SC_FOUND);
+      return;
+    }
+
+    MyHandlerAdapter adapter = getMyHandlerAdapter(handler);
+    ModelView mv = adapter.handle(request, response, handler);
+
+    String viewName = mv.getViewName();
+    MyView myView = viewResolver(viewName);
+
+    myView.render(mv.getModel(), request, response);
+  }
+
+  private MyHandlerAdapter getMyHandlerAdapter(Object handler) {
+    for (MyHandlerAdapter handlerAdapter : handlerAdapters) {
+      if (handlerAdapter.supports(handler)) {
+        return handlerAdapter;
+      }
+    }
+    throw new IllegalArgumentException("handler adapter 를 찾을 수 없습니다. handler = " + handler);
+  }
+
+  private Object getHandler(HttpServletRequest request) {
+    String requestURI = request.getRequestURI();
+    return handlerMappingMap.get(requestURI);
+  }
+
+  private MyView viewResolver(String viewName) {
+    return new MyView("/WEB-INF/views/" + viewName + ".jsp");
+  }
+}
+```
+
+ ### 2) ControllerV4HandlerAdapter 클래스
+
+ ControllerV4 타입의 핸들러를 사용하려면 해당 타입을 지원하는 핸들러 어댑터도 추가해야 한다.
+
+ ```java
+public class ControllerV4HandlerAdapter implements MyHandlerAdapter {
+
+  @Override
+  public boolean supports(Object handler) {
+    // 전달된 핸들러가 ControllerV4 타입인지 확인 
+    return handler instanceof ControllerV4;
+  }
+
+  @Override
+  public ModelView handle(HttpServletRequest request, HttpServletResponse response,
+      Object handler) {
+
+    ControllerV4 controller = (ControllerV4) handler;
+
+    Map<String, String> paramMap = createParamMap(request);
+
+    //model: 요청 처리가 끝나고 사용자에게 화면을 보여줄때 필요한 데이터
+    HashMap<String, Object> model = new HashMap<>();
+    
+    // ControllerV4 는 뷰이름을 문자열로 반환하므로 그에 맞는 별도 로직 구현을 추가한다.
+    String viewName = controller.process(paramMap, model);
+
+    ModelView mv = new ModelView(viewName);
+    mv.setModel(model);
+
+    return mv;
+  }
+
+  private Map<String, String> createParamMap(HttpServletRequest request) {
+    Map<String, String> paramMap = new HashMap<>();
+
+    request.getParameterNames().asIterator()
+        .forEachRemaining(paramName -> paramMap.put(paramName, request.getParameter(paramName)));
+    return paramMap;
+  }
+}
+```
+ 
+ ☑️ 핸들러 어댑터를 도입함으로써, 이제 새로운 타입의 핸들러가 추가되더라도 코드를 유연하고 쉽게 변경할 수 있다.  
+ 추후 ControllerV6, V7 등의 새로운 컨트롤러 타입이 추가된다고 해도 쉽게 확장할 수 있다.
+
+---
+
+
+ 
+ 
+
+
+
+ 
