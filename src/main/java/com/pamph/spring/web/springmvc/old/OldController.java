@@ -1,4 +1,4 @@
-package com.pamph.spring.web.springmvc;
+package com.pamph.spring.web.springmvc.old;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
