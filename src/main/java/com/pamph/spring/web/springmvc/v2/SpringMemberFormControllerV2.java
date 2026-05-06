@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/springmvc/v2/members/")
+@RequestMapping("/springmvc/v2/members")
 public class SpringMemberFormControllerV2 {
 
   private MemberRepository memberRepository = MemberRepository.getInstance();
@@ -35,7 +35,7 @@ public class SpringMemberFormControllerV2 {
     return mv;
   }
 
-  @RequestMapping("/members")
+  @RequestMapping
   public ModelAndView list() {
 
     List<Member> members = memberRepository.findAll();
