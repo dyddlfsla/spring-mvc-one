@@ -1,11 +1,11 @@
-# Spring MVC 1st
+# Spring MVC one : Part 1
 
-Let’s study the various core principles contained in the Spring MVC.
+Study notes and practice code for learning the core concepts of Spring MVC.
 
-## 📚 chapter
+## 📚 Chapters
 
 <details>
-<summary>📂 chapter 1 : Understanding Web Application</summary>
+<summary>📂 chapter 1. Understanding Web Applications</summary>
 
 - [1) What is web application?](docs/01-understanding-web-application/01-what-is-webapplication.md)
 - [2) About Servlet](docs/01-understanding-web-application/02-what-is-servlet.md)
@@ -18,7 +18,7 @@ Let’s study the various core principles contained in the Spring MVC.
 ---
 
 <details>
-<summary>📂 chapter 2 : About Servlet</summary>
+<summary>📂 chapter 2. Servlet</summary>
 
 - [1) Hello Servlet](docs/02-servlet/01-hello-servlet.md)
 - [2) HTTP Request](docs/02-servlet/02-http-servlet-request.md)
@@ -37,7 +37,7 @@ Let’s study the various core principles contained in the Spring MVC.
 ---
 
 <details>
-<summary>📂 chapter 3 : JSP & MVC </summary>
+<summary>📂 chapter 3. JSP & MVC </summary>
 
 - [1) apply JSP](docs/03-jsp-and-mvc/01-refactor-with-jsp.md)
 - [2) apply MVC patterns](docs/03-jsp-and-mvc/02-refactor-with-mvc.md)
@@ -47,7 +47,7 @@ Let’s study the various core principles contained in the Spring MVC.
 ---
 
 <details>
-<summary>📂 chapter 4 : Front Controller Pattern </summary>
+<summary>📂 chapter 4. Front Controller Pattern </summary>
 
 - [1) Front Controller v1](docs/04-front-controller/01-front-controller-v1.md)
 - [2) Front Controller v2](docs/04-front-controller/02-front-controller-v2.md)
@@ -61,7 +61,7 @@ Let’s study the various core principles contained in the Spring MVC.
 ---
 
 <details>
-<summary>📂 chapter 5 : Spring MVC Structure </summary>
+<summary>📂 chapter 5. Spring MVC Structure </summary>
 
 - [1) Spring MVC basic structure](docs/05-spring-mvc-structure/01-spring-mvc-basic.md)
 - [2) Handler Mapping & HandlerAdapter](docs/05-spring-mvc-structure/02-spring-mvc-handler-mapping.md)
@@ -73,7 +73,7 @@ Let’s study the various core principles contained in the Spring MVC.
 
 ---
 
-## Fixed
+## Notes
 
 - Tomcat logging level changed from DEBUG to TRACE
  
